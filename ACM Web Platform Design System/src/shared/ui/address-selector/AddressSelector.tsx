@@ -17,16 +17,21 @@ import { Label } from '../label';
 import { Button } from '../button';
 import { X, MapPin, Loader2 } from 'lucide-react';
 
+export interface AddressValue {
+    provinceId: number | null;
+    wardId: number | null;
+}
+
 export interface AddressSelectorProps {
     /**
-     * Current ward ID value
+     * Current address value with provinceId and wardId
      */
-    value?: number | null;
+    value?: AddressValue | null;
     
     /**
-     * Callback when ward selection changes
+     * Callback when address selection changes
      */
-    onChange: (wardId: number | null) => void;
+    onChange: (address: AddressValue) => void;
     
     /**
      * Error message to display
@@ -88,8 +93,10 @@ export function AddressSelector({
         clearSelection,
         getAddressBreadcrumb,
     } = useVietnameseAddress({
-        initialWardCode: value,
-        onWardChange: onChange,
+        initialWardCode: value?.wardId ?? null,
+        onAddressChange: (provinceId, wardId) => {
+            onChange({ provinceId, wardId });
+        },
     });
     
     const addressBreadcrumb = getAddressBreadcrumb();

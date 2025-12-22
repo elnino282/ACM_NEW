@@ -1,6 +1,6 @@
 // Address Selector Components
 export { AddressSelector } from './AddressSelector';
-export type { AddressSelectorProps } from './AddressSelector';
+export type { AddressSelectorProps, AddressValue } from './AddressSelector';
 export { AddressDisplay } from './AddressDisplay';
 export type { AddressDisplayProps } from './AddressDisplay';
 

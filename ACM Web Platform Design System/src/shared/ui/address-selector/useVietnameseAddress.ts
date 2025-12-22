@@ -21,9 +21,13 @@ interface UseVietnameseAddressOptions {
      */
     initialWardCode?: number | null;
     /**
-     * Callback when ward selection changes
+     * Callback when ward selection changes (deprecated - use onAddressChange)
      */
     onWardChange?: (wardId: number | null) => void;
+    /**
+     * Callback when address selection changes (provides both provinceId and wardId)
+     */
+    onAddressChange?: (provinceId: number | null, wardId: number | null) => void;
 }
 
 interface UseVietnameseAddressReturn {
@@ -69,6 +73,7 @@ interface UseVietnameseAddressReturn {
 export function useVietnameseAddress({
     initialWardCode,
     onWardChange,
+    onAddressChange,
 }: UseVietnameseAddressOptions = {}): UseVietnameseAddressReturn {
     // Selected values
     const [selectedProvince, setSelectedProvince] = useState<number | null>(null);
@@ -125,21 +130,26 @@ export function useVietnameseAddress({
         
         if (!provinceId) {
             onWardChange?.(null);
+            onAddressChange?.(null, null);
+        } else {
+            onAddressChange?.(provinceId, null);
         }
-    }, [onWardChange]);
+    }, [onWardChange, onAddressChange]);
     
     // Ward change handler
     const handleWardChange = useCallback((wardId: number | null) => {
         setSelectedWard(wardId);
         onWardChange?.(wardId);
-    }, [onWardChange]);
+        onAddressChange?.(selectedProvince, wardId);
+    }, [onWardChange, onAddressChange, selectedProvince]);
     
     // Clear all selections
     const clearSelection = useCallback(() => {
         setSelectedProvince(null);
         setSelectedWard(null);
         onWardChange?.(null);
-    }, [onWardChange]);
+        onAddressChange?.(null, null);
+    }, [onWardChange, onAddressChange]);
     
     // Get address breadcrumb string
     const getAddressBreadcrumb = useCallback((): string | null => {

@@ -43,7 +43,10 @@ const extractApiResult = <T>(response: any): T => {
 const transformFarmResponse = (data: any): any => ({
     id: data.id,
     name: data.name,
-    addressId: data.addressId,
+    provinceId: data.provinceId,
+    wardId: data.wardId,
+    provinceName: data.provinceName,
+    wardName: data.wardName,
     area: data.area,
     active: data.active,
 });
@@ -54,7 +57,10 @@ const transformFarmResponse = (data: any): any => ({
 const transformFarmDetailResponse = (data: any): any => ({
     id: data.id,
     name: data.name,
-    addressId: data.addressId,
+    provinceId: data.provinceId,
+    wardId: data.wardId,
+    provinceName: data.provinceName,
+    wardName: data.wardName,
     area: data.area,
     active: data.active,
     ownerUsername: data.ownerUsername,

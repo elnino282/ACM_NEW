@@ -321,6 +321,6 @@ export { ErrorBoundary, QueryError } from './error-boundary';
 
 // Address Selector (Vietnamese address cascade)
 export { AddressSelector, AddressDisplay, useVietnameseAddress, useAddressDisplay } from './address-selector';
-export type { AddressSelectorProps, AddressDisplayProps } from './address-selector';
+export type { AddressSelectorProps, AddressDisplayProps, AddressValue } from './address-selector';
 
 

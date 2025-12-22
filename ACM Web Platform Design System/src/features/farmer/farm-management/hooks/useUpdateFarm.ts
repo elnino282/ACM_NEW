@@ -12,7 +12,8 @@ export function useUpdateFarm(farmId: number, initialData?: FarmDetailResponse) 
         resolver: zodResolver(FarmUpdateRequestSchema),
         defaultValues: {
             name: '',
-            addressId: null,
+            provinceId: null,
+            wardId: null,
             area: null,
         },
     });
@@ -22,7 +23,8 @@ export function useUpdateFarm(farmId: number, initialData?: FarmDetailResponse) 
         if (initialData) {
             form.reset({
                 name: initialData.name,
-                addressId: initialData.addressId,
+                provinceId: initialData.provinceId ?? null,
+                wardId: initialData.wardId ?? null,
                 area: initialData.area,
                 active: initialData.active,
             });

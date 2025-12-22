@@ -21,7 +21,10 @@ export type FarmListParams = z.infer<typeof FarmListParamsSchema>;
 export const FarmSchema = z.object({
     id: z.number().int().positive(),
     name: z.string(),
-    addressId: z.number().int().nullable().optional(),
+    provinceId: z.number().int().nullable().optional(),
+    wardId: z.number().int().nullable().optional(),
+    provinceName: z.string().nullable().optional(),
+    wardName: z.string().nullable().optional(),
     area: z.union([z.string(), z.number()]).nullable().optional(),
     active: z.boolean(),
 });
@@ -54,7 +57,10 @@ const PlotResponseSchema = z.object({
 export const FarmDetailResponseSchema = z.object({
     id: z.number().int().positive(),
     name: z.string(),
-    addressId: z.number().int().nullable().optional(),
+    provinceId: z.number().int().nullable().optional(),
+    wardId: z.number().int().nullable().optional(),
+    provinceName: z.string().nullable().optional(),
+    wardName: z.string().nullable().optional(),
     area: z.union([z.string(), z.number()]).nullable().optional(),
     active: z.boolean(),
     ownerUsername: z.string(),
@@ -71,7 +77,8 @@ export type FarmDetailResponse = z.infer<typeof FarmDetailResponseSchema>;
 
 export const FarmCreateRequestSchema = z.object({
     name: z.string().min(1, "Farm name is required").max(255, "Farm name must not exceed 255 characters"),
-    addressId: z.number().int().positive().nullable().optional(),
+    provinceId: z.number().int().positive("Province is required"),
+    wardId: z.number().int().positive("Ward is required"),
     area: z.union([z.string(), z.number()])
         .nullable()
         .optional()
@@ -93,7 +100,8 @@ export type FarmCreateRequest = z.infer<typeof FarmCreateRequestSchema>;
 
 export const FarmUpdateRequestSchema = z.object({
     name: z.string().min(1, "Farm name is required").max(255, "Farm name must not exceed 255 characters").optional(),
-    addressId: z.number().int().positive().nullable().optional(),
+    provinceId: z.number().int().positive().nullable().optional(),
+    wardId: z.number().int().positive().nullable().optional(),
     area: z.union([z.string(), z.number()])
         .nullable()
         .optional()

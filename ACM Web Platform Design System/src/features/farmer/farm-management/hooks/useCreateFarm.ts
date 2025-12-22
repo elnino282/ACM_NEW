@@ -11,7 +11,8 @@ export function useCreateFarm(onSuccessCallback?: () => void) {
         resolver: zodResolver(FarmCreateRequestSchema),
         defaultValues: {
             name: '',
-            addressId: null,
+            provinceId: null,
+            wardId: null,
             area: null,
         },
     });
@@ -22,7 +23,8 @@ export function useCreateFarm(onSuccessCallback?: () => void) {
             toast.success('Farm created successfully');
             form.reset({
                 name: '',
-                addressId: null,
+                provinceId: null,
+                wardId: null,
                 area: null,
             }, {
                 keepErrors: false,

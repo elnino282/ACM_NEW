@@ -9,11 +9,12 @@ import {
     Input,
     Label,
     AddressSelector,
+    type AddressValue,
 } from '@/shared/ui';
 import { useCreateFarm } from '../hooks/useCreateFarm';
 import { useUpdateFarm } from '../hooks/useUpdateFarm';
 import type { FarmDetailResponse } from '@/entities/farm';
-import { Controller } from 'react-hook-form';
+import { Controller, useWatch } from 'react-hook-form';
 
 interface FarmFormDialogProps {
     open: boolean;
@@ -71,18 +72,31 @@ export function FarmFormDialog({
                         </div>
 
                         <Controller
-                            name="addressId"
+                            name="provinceId"
                             control={form.control}
-                            render={({ field, fieldState }) => (
-                                <AddressSelector
-                                    value={field.value}
-                                    onChange={field.onChange}
-                                    error={fieldState.error?.message}
-                                    disabled={isSubmitting}
-                                    label="Farm Address"
-                                    description="Select the location of your farm"
-                                />
-                            )}
+                            render={({ field: provinceField, fieldState: provinceFieldState }) => {
+                                const wardId = useWatch({ control: form.control, name: 'wardId' });
+                                const wardError = form.formState.errors.wardId?.message;
+                                const combinedError = provinceFieldState.error?.message || wardError;
+
+                                return (
+                                    <AddressSelector
+                                        value={{
+                                            provinceId: provinceField.value,
+                                            wardId: wardId ?? null,
+                                        }}
+                                        onChange={(address: AddressValue) => {
+                                            provinceField.onChange(address.provinceId);
+                                            form.setValue('wardId', address.wardId);
+                                        }}
+                                        error={combinedError}
+                                        disabled={isSubmitting}
+                                        label="Farm Address"
+                                        description="Select the location of your farm"
+                                        required
+                                    />
+                                );
+                            }}
                         />
 
                         <div className="space-y-2">
@@ -153,18 +167,30 @@ export function FarmFormDialog({
                     </div>
 
                     <Controller
-                        name="addressId"
+                        name="provinceId"
                         control={form.control}
-                        render={({ field, fieldState }) => (
-                            <AddressSelector
-                                value={field.value}
-                                onChange={field.onChange}
-                                error={fieldState.error?.message}
-                                disabled={isSubmitting}
-                                label="Farm Address"
-                                description="Update the location of your farm"
-                            />
-                        )}
+                        render={({ field: provinceField, fieldState: provinceFieldState }) => {
+                            const wardId = useWatch({ control: form.control, name: 'wardId' });
+                            const wardError = form.formState.errors.wardId?.message;
+                            const combinedError = provinceFieldState.error?.message || wardError;
+
+                            return (
+                                <AddressSelector
+                                    value={{
+                                        provinceId: provinceField.value,
+                                        wardId: wardId ?? null,
+                                    }}
+                                    onChange={(address: AddressValue) => {
+                                        provinceField.onChange(address.provinceId);
+                                        form.setValue('wardId', address.wardId);
+                                    }}
+                                    error={combinedError}
+                                    disabled={isSubmitting}
+                                    label="Farm Address"
+                                    description="Update the location of your farm"
+                                />
+                            );
+                        }}
                     />
 
                     <div className="space-y-2">
