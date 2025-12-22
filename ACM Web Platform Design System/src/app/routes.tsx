@@ -21,6 +21,10 @@ import { Reports } from '@/features/farmer/reports';
 import { TaskWorkspace } from '@/features/farmer/tasks';
 import { FarmerProfile } from '@/features/farmer/profile';
 import { FarmsListPage, FarmDetailPage } from '@/features/farmer/farm-management';
+import { FieldLogsPage } from '@/pages/farmer/FieldLogsPage';
+import { InventoryPage } from '@/pages/farmer/InventoryPage';
+import { IncidentsPage } from '@/pages/farmer/IncidentsPage';
+import { AiAssistantPage } from '@/pages/farmer/AiAssistantPage';
 
 /**
  * Root redirect - redirects to signin or user's portal based on auth state
@@ -82,16 +86,16 @@ export function AppRoutes() {
       >
         {/* Redirect /farmer to /farmer/dashboard */}
         <Route index element={<Navigate to="dashboard" replace />} />
-        
+
         {/* Farmer Dashboard */}
         <Route path="dashboard" element={<FarmerDashboard />} />
-        
+
         {/* Farm Management with nested routes */}
         <Route path="farms">
           <Route index element={<FarmsListPage />} />
           <Route path=":id" element={<FarmDetailPage />} />
         </Route>
-        
+
         {/* Other Farmer Features */}
         <Route path="plots" element={<PlotManagement />} />
         <Route path="seasons" element={<SeasonManagement />} />
@@ -102,6 +106,10 @@ export function AppRoutes() {
         <Route path="sales" element={<SaleManagement />} />
         <Route path="reports" element={<Reports />} />
         <Route path="documents" element={<Documents />} />
+        <Route path="field-logs" element={<FieldLogsPage />} />
+        <Route path="inventory" element={<InventoryPage />} />
+        <Route path="incidents" element={<IncidentsPage />} />
+        <Route path="ai-assistant" element={<AiAssistantPage />} />
         <Route path="profile" element={<FarmerProfile />} />
       </Route>
 

@@ -1,7 +1,7 @@
 import {
     Home, MapPin, Calendar, CheckSquare, DollarSign, Package,
     ShoppingCart, BarChart3, Settings, Sprout, FileText,
-    TrendingUp, Shield, Warehouse
+    TrendingUp, Shield, Warehouse, Users, AlertTriangle
 } from 'lucide-react';
 import type { PortalType, PortalConfig, Notification } from '../model/types';
 
@@ -17,9 +17,14 @@ export const portalConfig: Record<PortalType, PortalConfig> = {
         emoji: '🛡️',
         navigation: [
             { id: 'dashboard', label: 'Dashboard', icon: Home },
-            { id: 'farmers', label: 'Farmer Management', icon: Sprout },
+            { id: 'farms-plots', label: 'Farms & Plots', icon: Warehouse },
+            { id: 'crops-varieties', label: 'Crops & Varieties', icon: Sprout },
+            { id: 'seasons-tasks', label: 'Seasons & Tasks', icon: Calendar },
+            { id: 'inventory-suppliers', label: 'Inventory & Suppliers', icon: Package },
+            { id: 'farmers', label: 'Farmer Management', icon: Users },
             { id: 'buyers', label: 'Buyer Management', icon: ShoppingCart },
             { id: 'documents', label: 'Documents', icon: FileText },
+            { id: 'incidents', label: 'Incidents', icon: AlertTriangle },
             { id: 'reports', label: 'Reports', icon: BarChart3 },
             { id: 'monitoring', label: 'Monitoring', icon: TrendingUp },
             { id: 'settings', label: 'Settings', icon: Settings },
@@ -32,16 +37,17 @@ export const portalConfig: Record<PortalType, PortalConfig> = {
         emoji: '🌾',
         navigation: [
             { id: 'dashboard', label: 'Dashboard', icon: Home },
-            { id: 'farms', label: 'Farm Management', icon: Warehouse },
-            { id: 'plots', label: 'Plot Management', icon: MapPin },
-            { id: 'seasons', label: 'Season Management', icon: Calendar },
+            { id: 'farms', label: 'Farms & Plots', icon: Warehouse },
+            { id: 'seasons', label: 'Seasons', icon: Calendar },
             { id: 'tasks', label: 'Tasks Workspace', icon: CheckSquare },
-            { id: 'crops', label: 'Crop Management', icon: Sprout },
-            { id: 'expenses', label: 'Expense Management', icon: DollarSign },
-            { id: 'harvest', label: 'Harvest Management', icon: Package },
-            { id: 'sales', label: 'Sale Management', icon: ShoppingCart },
-            { id: 'reports', label: 'Reports', icon: BarChart3 },
+            { id: 'field-logs', label: 'Field Logs', icon: FileText },
+            { id: 'expenses', label: 'Expenses', icon: DollarSign },
+            { id: 'harvest', label: 'Harvest', icon: Package },
+            { id: 'sales', label: 'Produce Lots / Sale Management', icon: ShoppingCart },
+            { id: 'inventory', label: 'Inventory', icon: Warehouse },
             { id: 'documents', label: 'Documents', icon: FileText },
+            { id: 'incidents', label: 'Incidents', icon: Shield },
+            { id: 'ai-assistant', label: 'AI Assistant', icon: Sprout },
         ],
     },
     BUYER: {

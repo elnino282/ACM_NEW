@@ -2,14 +2,15 @@ import type { BreadcrumbPath } from '@/features/shared/layout/types';
 
 export type AdminView =
   | 'dashboard'
-  | 'users'
-  | 'farmers'
-  | 'buyers'
-  | 'contracts'
+  | 'users-roles'
+  | 'farms-plots'
+  | 'crops-varieties'
+  | 'seasons-tasks'
+  | 'inventory-suppliers'
   | 'documents'
+  | 'incidents'
   | 'reports'
-  | 'monitoring'
-  | 'settings';
+  | 'ai-chats';
 
 export type AdminViewConfig = {
   title: string;

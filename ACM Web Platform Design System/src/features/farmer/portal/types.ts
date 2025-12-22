@@ -9,12 +9,17 @@ export type FarmerView =
   | 'plots'
   | 'seasons'
   | 'tasks'
-  | 'crops'
+  | 'field-logs'
   | 'expenses'
   | 'harvest'
   | 'sales'
-  | 'reports'
+  | 'inventory'
   | 'documents'
+  | 'incidents'
+  | 'ai-assistant'
+  // Keep these for backward compatibility (accessible via other routes)
+  | 'crops'
+  | 'reports'
   | 'profile';
 
 /**

@@ -1,15 +1,16 @@
 import type { AdminView, AdminViewConfig } from './types';
 
 export const ADMIN_VIEW_CONFIG: Record<AdminView, AdminViewConfig> = {
-  dashboard: { title: 'Dashboard' },
-  users: { title: 'User Management', breadcrumbLabel: 'User Management' },
-  farmers: { title: 'Farmer Management', breadcrumbLabel: 'Farmer Management' },
-  buyers: { title: 'Buyer Management', breadcrumbLabel: 'Buyer Management' },
-  contracts: { title: 'Contracts', breadcrumbLabel: 'Contracts' },
-  documents: { title: 'Documents', breadcrumbLabel: 'Documents' },
-  reports: { title: 'Reports', breadcrumbLabel: 'Reports' },
-  monitoring: { title: 'Monitoring', breadcrumbLabel: 'Monitoring' },
-  settings: { title: 'Settings', breadcrumbLabel: 'Settings' },
+  dashboard: { title: 'Admin Dashboard', breadcrumbLabel: 'Dashboard' },
+  'users-roles': { title: 'Users & Roles / Người dùng & Phân quyền', breadcrumbLabel: 'Users & Roles' },
+  'farms-plots': { title: 'Farms & Plots / Trang trại & Lô đất', breadcrumbLabel: 'Farms & Plots' },
+  'crops-varieties': { title: 'Crops & Varieties / Cây trồng & Giống', breadcrumbLabel: 'Crops & Varieties' },
+  'seasons-tasks': { title: 'Seasons & Tasks / Mùa vụ & Công việc', breadcrumbLabel: 'Seasons & Tasks' },
+  'inventory-suppliers': { title: 'Inventory & Suppliers / Vật tư & Nhà cung cấp', breadcrumbLabel: 'Inventory & Suppliers' },
+  documents: { title: 'Documents / Tài liệu', breadcrumbLabel: 'Documents' },
+  incidents: { title: 'Incidents / Sự cố', breadcrumbLabel: 'Incidents' },
+  reports: { title: 'Reports / Báo cáo', breadcrumbLabel: 'Reports' },
+  'ai-chats': { title: 'AI Chats / Trò chuyện AI', breadcrumbLabel: 'AI Chats' },
 };
 
 export const getAdminViewTitle = (view: AdminView): string =>

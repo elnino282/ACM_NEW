@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -14,14 +15,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter;
 import org.springframework.security.oauth2.server.resource.authentication.JwtGrantedAuthoritiesConverter;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.CorsConfigurationSource;
-import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-import org.springframework.web.filter.CorsFilter;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.Arrays;
-import java.util.List;
 
 @Configuration
 @EnableWebSecurity
@@ -56,7 +52,7 @@ public class SecurityConfig {
         log.info("Cau hinh chuoi bo loc bao mat...");
 
         httpSecurity
-                .cors(cors -> cors.configurationSource(corsConfigurationSource()))
+                .cors(Customizer.withDefaults())
                 .csrf(AbstractHttpConfigurer::disable)
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
@@ -97,43 +93,6 @@ public class SecurityConfig {
         log.info("Swagger endpoints: {}", Arrays.toString(SWAGGER_ENDPOINTS));
 
         return httpSecurity.build();
-    }
-
-    @Bean
-    public CorsConfigurationSource corsConfigurationSource() {
-        log.info("Cau hinh CORS cho giao dien nguoi dung: http://localhost:5173");
-
-        CorsConfiguration corsConfiguration = new CorsConfiguration();
-
-        // Allow specific frontend origin
-        corsConfiguration.setAllowedOriginPatterns(List.of("http://localhost:5173", "http://localhost:3000"));
-
-        // Allow credentials (important for JWT cookies if needed)
-        corsConfiguration.setAllowCredentials(true);
-
-        // Allow common HTTP methods
-        corsConfiguration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
-
-        // Allow common headers
-        corsConfiguration.setAllowedHeaders(Arrays.asList(
-                "Origin", "Content-Type", "Accept", "Authorization", "X-Requested-With"));
-
-        // Allow exposed headers
-        corsConfiguration.setExposedHeaders(Arrays.asList("Authorization", "X-Total-Count"));
-
-        // Set max age for preflight requests
-        corsConfiguration.setMaxAge(3600L);
-
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", corsConfiguration);
-
-        log.info("Cau hinh CORS hoan tat voi allowCredentials: {}", corsConfiguration.getAllowCredentials());
-        return source;
-    }
-
-    @Bean
-    public CorsFilter corsFilter() {
-        return new CorsFilter(corsConfigurationSource());
     }
 
     @Bean

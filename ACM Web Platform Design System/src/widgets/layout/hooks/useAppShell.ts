@@ -19,7 +19,12 @@ export function useAppShell(props: AppShellProps) {
     } = props;
 
     // UI State
-    const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+    const [sidebarCollapsed, setSidebarCollapsed] = useState(() => {
+        // Initialize from localStorage with portal-specific key
+        const storageKey = `${portalType.toLowerCase()}_sidebar_collapsed`;
+        const stored = localStorage.getItem(storageKey);
+        return stored ? JSON.parse(stored) : false;
+    });
     const [searchQuery, setSearchQuery] = useState('');
     const [searchDebounced, setSearchDebounced] = useState('');
     const [aiDrawerOpen, setAiDrawerOpen] = useState(false);
@@ -35,6 +40,15 @@ export function useAppShell(props: AppShellProps) {
     // Computed Values
     const config: PortalConfig = portalConfig[portalType];
     const unreadCount = notifications.filter((n) => !n.read).length;
+
+    /**
+     * Effect: Persist Sidebar State
+     * Saves sidebar collapsed state to localStorage whenever it changes
+     */
+    useEffect(() => {
+        const storageKey = `${portalType.toLowerCase()}_sidebar_collapsed`;
+        localStorage.setItem(storageKey, JSON.stringify(sidebarCollapsed));
+    }, [sidebarCollapsed, portalType]);
 
     /**
      * Effect: Search Debouncing

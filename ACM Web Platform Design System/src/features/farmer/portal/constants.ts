@@ -9,44 +9,61 @@ export const FARMER_VIEW_CONFIG: Record<FarmerView, FarmerViewConfig> = {
     breadcrumbLabel: 'Dashboard',
   },
   farms: {
-    title: 'Farm Management',
-    breadcrumbLabel: 'Farm Management',
+    title: 'Farms & Plots',
+    breadcrumbLabel: 'Farms & Plots',
   },
   plots: {
     title: 'Plot Management',
     breadcrumbLabel: 'Plot Management',
   },
   seasons: {
-    title: 'Season Management',
-    breadcrumbLabel: 'Season Management',
+    title: 'Seasons',
+    breadcrumbLabel: 'Seasons',
   },
   tasks: {
     title: 'Tasks Workspace',
     breadcrumbLabel: 'Tasks Workspace',
   },
-  crops: {
-    title: 'Crop Management',
-    breadcrumbLabel: 'Crop Management',
+  'field-logs': {
+    title: 'Field Logs',
+    breadcrumbLabel: 'Field Logs',
   },
   expenses: {
-    title: 'Expense Management',
-    breadcrumbLabel: 'Expense Management',
+    title: 'Expenses',
+    breadcrumbLabel: 'Expenses',
   },
   harvest: {
-    title: 'Harvest Management',
-    breadcrumbLabel: 'Harvest Management',
+    title: 'Harvest',
+    breadcrumbLabel: 'Harvest',
   },
   sales: {
-    title: 'Sale Management',
-    breadcrumbLabel: 'Sale Management',
+    title: 'Produce Lots / Sale Management',
+    breadcrumbLabel: 'Produce Lots / Sale Management',
   },
-  reports: {
-    title: 'Reports',
-    breadcrumbLabel: 'Reports',
+  inventory: {
+    title: 'Inventory',
+    breadcrumbLabel: 'Inventory',
   },
   documents: {
     title: 'Documents',
     breadcrumbLabel: 'Documents',
+  },
+  incidents: {
+    title: 'Incidents',
+    breadcrumbLabel: 'Incidents',
+  },
+  'ai-assistant': {
+    title: 'AI Assistant',
+    breadcrumbLabel: 'AI Assistant',
+  },
+  // Keep for backward compatibility
+  crops: {
+    title: 'Crop Management',
+    breadcrumbLabel: 'Crop Management',
+  },
+  reports: {
+    title: 'Reports',
+    breadcrumbLabel: 'Reports',
   },
   profile: {
     title: 'Profile',

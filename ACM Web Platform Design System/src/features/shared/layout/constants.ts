@@ -1,7 +1,7 @@
 import {
   Home, MapPin, Calendar, CheckSquare, DollarSign, Package,
   ShoppingCart, BarChart3, Settings, Sprout, FileText,
-  TrendingUp, Shield, Warehouse
+  TrendingUp, Shield, Warehouse, Users, AlertTriangle, MessageSquare
 } from 'lucide-react';
 import { PortalType, PortalConfig, Notification } from './types';
 
@@ -16,13 +16,16 @@ export const portalConfig: Record<PortalType, PortalConfig> = {
     icon: Shield,
     emoji: '🛡️',
     navigation: [
-      { id: 'dashboard', label: 'Dashboard', icon: Home },
-      { id: 'farmers', label: 'Farmer Management', icon: Sprout },
-      { id: 'buyers', label: 'Buyer Management', icon: ShoppingCart },
-      { id: 'documents', label: 'Documents', icon: FileText },
-      { id: 'reports', label: 'Reports', icon: BarChart3 },
-      { id: 'monitoring', label: 'Monitoring', icon: TrendingUp },
-      { id: 'settings', label: 'Settings', icon: Settings },
+      { id: 'dashboard', label: 'Admin Dashboard', icon: Home },
+      { id: 'users-roles', label: 'Users & Roles / Người dùng & Phân quyền', icon: Users },
+      { id: 'farms-plots', label: 'Farms & Plots / Trang trại & Lô đất', icon: Warehouse },
+      { id: 'crops-varieties', label: 'Crops & Varieties / Cây trồng & Giống', icon: Sprout },
+      { id: 'seasons-tasks', label: 'Seasons & Tasks / Mùa vụ & Công việc', icon: Calendar },
+      { id: 'inventory-suppliers', label: 'Inventory & Suppliers / Vật tư & Nhà cung cấp', icon: Package },
+      { id: 'documents', label: 'Documents / Tài liệu', icon: FileText },
+      { id: 'incidents', label: 'Incidents / Sự cố', icon: AlertTriangle },
+      { id: 'reports', label: 'Reports / Báo cáo', icon: BarChart3 },
+      { id: 'ai-chats', label: 'AI Chats / Trò chuyện AI', icon: MessageSquare },
     ],
   },
   FARMER: {
