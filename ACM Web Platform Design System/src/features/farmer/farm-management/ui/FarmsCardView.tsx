@@ -47,14 +47,14 @@ export function FarmsCardView({
     // Selection state
     const isAllSelected = farms.length > 0 && selectedFarms.length === farms.length;
     const isSomeSelected = selectedFarms.length > 0 && selectedFarms.length < farms.length;
-    
+
     // Format area value
     const formatArea = (area: string | number | null | undefined): string => {
         if (!area) return '—';
         const numArea = typeof area === 'string' ? parseFloat(area) : area;
         return isNaN(numArea) ? '—' : `${numArea.toFixed(2)} ha`;
     };
-    
+
     return (
         <>
             {/* Select All Header */}
@@ -73,12 +73,12 @@ export function FarmsCardView({
                     {farms.length} farm{farms.length !== 1 ? 's' : ''}
                 </p>
             </div>
-            
+
             {/* Cards Grid */}
             <div className="space-y-4">
                 {farms.map((farm) => {
                     const isSelected = selectedFarms.includes(farm.id);
-                    
+
                     return (
                         <div
                             key={farm.id}
@@ -109,7 +109,7 @@ export function FarmsCardView({
                                     onDelete={onDelete}
                                 />
                             </div>
-                            
+
                             {/* Card Body - Clickable */}
                             <div
                                 onClick={() => onView(farm.id)}
@@ -119,7 +119,7 @@ export function FarmsCardView({
                                 <h3 className="text-lg font-semibold text-gray-900 mb-3">
                                     {farm.name}
                                 </h3>
-                                
+
                                 {/* Farm Details Grid */}
                                 <div className="space-y-2.5">
                                     {/* Area */}
@@ -134,23 +134,23 @@ export function FarmsCardView({
                                             </div>
                                         </div>
                                     )}
-                                    
+
                                     {/* Address */}
-                                    {farm.addressId && (
+                                    {farm.wardId && (
                                         <div className="flex items-start gap-2">
                                             <MapPin className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
                                             <div>
                                                 <p className="text-xs text-gray-500 uppercase tracking-wide">Location</p>
                                                 <p className="text-sm text-gray-900">
                                                     <AddressDisplay
-                                                        wardCode={farm.addressId}
+                                                        wardCode={farm.wardId}
                                                         variant="compact"
                                                     />
                                                 </p>
                                             </div>
                                         </div>
                                     )}
-                                    
+
                                     {/* Farm ID */}
                                     <div className="pt-2 border-t border-gray-100">
                                         <p className="text-xs text-gray-400">
@@ -163,7 +163,7 @@ export function FarmsCardView({
                     );
                 })}
             </div>
-            
+
             {/* Footer */}
             <div className="mt-6 px-4 py-3 bg-gray-50 rounded-lg border border-gray-200">
                 <p className="text-sm text-center text-gray-600">
@@ -175,7 +175,7 @@ export function FarmsCardView({
                     )}
                 </p>
             </div>
-            
+
             {/* Bulk Action Bar */}
             <FarmBulkActionBar
                 selectedCount={selectedFarms.length}

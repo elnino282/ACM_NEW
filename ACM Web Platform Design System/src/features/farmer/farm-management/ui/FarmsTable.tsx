@@ -41,7 +41,7 @@ export function FarmsTable({ farms, onView, onEdit, onDelete }: FarmsTableProps)
                                 </TableCell>
                                 <TableCell>
                                     <AddressDisplay
-                                        wardCode={farm.addressId}
+                                        wardCode={farm.wardId}
                                         variant="compact"
                                     />
                                 </TableCell>

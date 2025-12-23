@@ -39,6 +39,14 @@ public enum ErrorCode {
         FARM_NAME_EXISTS("ERR_FARM_NAME_EXISTS", "Farm name already exists", HttpStatus.CONFLICT),
         FARM_HAS_CHILD_RECORDS("ERR_FARM_HAS_CHILD_RECORDS", "Cannot delete farm with related plots or seasons",
                         HttpStatus.BAD_REQUEST),
+        FARM_ALREADY_INACTIVE("ERR_FARM_ALREADY_INACTIVE", "Farm is already inactive", HttpStatus.BAD_REQUEST),
+        FARM_ALREADY_ACTIVE("ERR_FARM_ALREADY_ACTIVE", "Farm is already active", HttpStatus.BAD_REQUEST),
+        FARM_CANNOT_RESTORE("ERR_FARM_CANNOT_RESTORE", "Cannot restore farm: foreign key constraints violated",
+                        HttpStatus.BAD_REQUEST),
+        FARM_CANNOT_HARD_DELETE("ERR_FARM_CANNOT_HARD_DELETE",
+                        "Cannot permanently delete farm with related data", HttpStatus.BAD_REQUEST),
+        FARM_OWNER_INACTIVE("ERR_FARM_OWNER_INACTIVE", "Cannot restore farm: owner account is inactive",
+                        HttpStatus.BAD_REQUEST),
         PLOT_HAS_ACTIVE_SEASONS("ERR_PLOT_HAS_ACTIVE_SEASONS",
                         "Cannot delete plot because it has active or planned seasons", HttpStatus.BAD_REQUEST),
 
@@ -91,7 +99,8 @@ public enum ErrorCode {
         PROVINCE_REQUIRED("ERR_PROVINCE_REQUIRED", "Province is required when creating a farm", HttpStatus.BAD_REQUEST),
         WARD_NOT_FOUND("ERR_WARD_NOT_FOUND", "Ward not found", HttpStatus.NOT_FOUND),
         WARD_REQUIRED("ERR_WARD_REQUIRED", "Ward is required when creating a farm", HttpStatus.BAD_REQUEST),
-        WARD_NOT_IN_PROVINCE("ERR_WARD_NOT_IN_PROVINCE", "Ward does not belong to the specified province", HttpStatus.BAD_REQUEST),
+        WARD_NOT_IN_PROVINCE("ERR_WARD_NOT_IN_PROVINCE", "Ward does not belong to the specified province",
+                        HttpStatus.BAD_REQUEST),
         ADDRESS_IMPORT_FAILED("ERR_ADDRESS_IMPORT_FAILED", "Failed to import address data",
                         HttpStatus.INTERNAL_SERVER_ERROR);
 

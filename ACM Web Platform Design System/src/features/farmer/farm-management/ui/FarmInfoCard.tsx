@@ -68,7 +68,7 @@ export function FarmInfoCard({
                         <p className="text-sm font-medium text-gray-500">Address</p>
                         <p className="mt-1 text-sm">
                             <AddressDisplay
-                                wardCode={farm.addressId}
+                                wardCode={farm.wardId}
                                 variant="full"
                                 showIcon={true}
                                 fallback="Not specified"

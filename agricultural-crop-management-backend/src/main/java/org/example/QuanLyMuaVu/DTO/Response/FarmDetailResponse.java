@@ -25,4 +25,18 @@ public class FarmDetailResponse {
     BigDecimal area;
     Boolean active;
     String ownerUsername;
+
+    /**
+     * Warning flag indicating if this farm has plots that may be inactive or
+     * orphaned.
+     * Only populated in restore operation responses.
+     */
+    Boolean hasOrphanedPlots;
+
+    /**
+     * Warning flag indicating if this farm has seasons that may be expired or
+     * orphaned.
+     * Only populated in restore operation responses.
+     */
+    Boolean hasOrphanedSeasons;
 }
