@@ -53,7 +53,7 @@ export function FarmsListView({
     // Tri-state checkbox state
     const isAllSelected = farms.length > 0 && selectedFarms.length === farms.length;
     const isSomeSelected = selectedFarms.length > 0 && selectedFarms.length < farms.length;
-    
+
     // Use card view on mobile devices
     if (isMobile) {
         return (
@@ -254,7 +254,7 @@ export function FarmsListView({
                                         {/* Address */}
                                         <td className="px-4 py-3.5">
                                             <AddressDisplay
-                                                wardCode={farm.addressId}
+                                                wardCode={farm.wardId}
                                                 variant="compact"
                                                 className="text-sm text-slate-600"
                                             />
